@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_20_053829) do
+ActiveRecord::Schema.define(version: 2023_09_20_064314) do
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "amount"
+    t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
-    t.text "explanation"
-    t.boolean "is_active"
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.text "explanation", null: false
+    t.boolean "is_active", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
