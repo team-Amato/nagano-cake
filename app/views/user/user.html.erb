@@ -1,7 +1,0 @@
-
-<%= form_with model:@user, local:true do |f| %>
-  <div class="form-group">
-        <%= f.label :image %>
-        <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-      </div>
-<%= image_tag user.get_profile_image, size:'100x100' %>
