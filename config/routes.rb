@@ -1,69 +1,63 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/create'
-    get 'items/update'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :adimn do
-    get 'genres/index'
-    get 'genres/edit'
-    get 'genres/create'
-    get 'genres/update'
-  end
-   namespace :admin do
-    get 'homes/top'
-  end
-  namespace :admin do
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-  end
-  namespace :admin do
-    get 'order_details/update'
-  end
-  namespace :admin do
-    get 'orders/show'
-    get 'orders/update'
-  end
-  get 'orders/new'
-  get 'orders/confirm'
-  get 'orders/thanks'
-  get 'orders/create'
-  get 'orders/index'
-  get 'orders/show'
-  get 'cart_items/index'
-  get 'cart_items/update'
-  get 'cart_items/destroy'
-  get 'cart_items/destroy_all'
-  get 'cart_items/create'
-  get 'customers/show'
-  get 'customers/edit'
-  get 'customers/update'
+  root to: "homes#top"
+  get '/about' => "homes#about"
+
+  get '/customers/sign_up' => 'registrations#new'
+  post '/customers' => 'registrations#create'
+
+  get '/customers/sign_in' => 'sessions#new'
+  post '/customers/sign_in' => 'sessions#create'
+  delete '/customers/sign_out' => 'sessions#destroy'
+
+  get '/customers/mypage' => 'customers#show'
+  get '/customers/edit' => 'customers#edit'
+  patch '/customers' => 'customers#update'
   get 'customers/check'
-  get 'customers/withdraw'
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  get 'addresses/index'
-  get 'addresses/edit'
-  get 'addresses/create'
-  get 'addresses/update'
-  get 'addresses/destroy'
-  get 'registrations/new'
-  get 'registrations/create'
-  get 'items/index'
-  get 'items/show'
-  get 'homes/top'
-  get 'homes/about'
+  patch 'customers/withdraw'
+
+  resources :cart_items, only: [:index, :update, :destroy, :create]
+  delete 'cart_items/destroy_all'
+
+  resources :orders, only: [:new, :create, :index, :show]
+  post 'orders/confirm'
+  get 'orders/thanks'
+
+  resources :items, only: [:index, :show]
+
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+
+  #admin
+  namespace :admin do
+    get '/admin/sign_in' => 'sessions#new'
+    post '/admin/sign_in' => 'sessions#create'
+    delete '/admin/sign_out' => 'sessions#destroy'
+  end
+
+  namespace :admin do
+    get '/admin' => 'homes#top'
+  end
+
+  namespace :admin do
+    resources :items, only: [:edit, :update, :new, :create, :index, :show]
+  end
+
+  namespace :adimn do
+    resources :genres, only: [:edit, :update, :index, :create]
+  end
+
+  namespace :admin do
+    resources :customers, only: [:edit, :update, :index, :show]
+  end
+
+  namespace :admin do
+    resources :orders, only: [:show, :update]
+  end
+
+  namespace :admin do
+    resources :order_details, only: [:update]
+  end
+
   devise_for :users
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
