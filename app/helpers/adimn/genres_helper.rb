@@ -1,2 +1,0 @@
-module Adimn::GenresHelper
-end
