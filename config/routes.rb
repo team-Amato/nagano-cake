@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   devise_for :customers
-  
+
   root to: "homes#top"
   get '/about' => "homes#about"
   get '/customers/mypage' => 'customers#show'
   get 'customers/check'
   patch 'customers/withdraw'
-  
+
   get '/genre/search' => 'searches#genre_search'
 
   resources :cart_items, only: [:index, :update, :destroy, :create]
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     resources :items, only: [:edit, :update, :new, :create, :index, :show]
   end
 
-  namespace :adimn do
+  namespace :admin do
     resources :genres, only: [:edit, :update, :index, :create]
   end
 
