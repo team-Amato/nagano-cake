@@ -23,11 +23,11 @@ Rails.application.routes.draw do
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
   #admin
-  namespace :admin do
-    get '/admin/sign_in' => 'sessions#new'
-    post '/admin/sign_in' => 'sessions#create'
-    delete '/admin/sign_out' => 'sessions#destroy'
-  end
+  #namespace :admin do
+    #get '/admin/sign_in' => 'sessions#new'
+    #post '/admin/sign_in' => 'sessions#create'
+    #delete '/admin/sign_out' => 'sessions#destroy'
+  #end
 
   namespace :admin do
     get '/admin' => 'homes#top'
