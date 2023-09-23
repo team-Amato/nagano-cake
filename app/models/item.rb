@@ -4,7 +4,7 @@ class Item < ApplicationRecord
    validates :price
    validates :explanation
    validates :is_active
-   validates :itemimage
+   validates :item_image
  end
  has_one_attached :item_image
 end
