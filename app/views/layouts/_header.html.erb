@@ -47,13 +47,13 @@
           </li>
         <!--新規登録-->
           <li>
-            <%=  link_to  customers_sign_up_path ,class: 'nav-link text-light' do %>
+            <%=  link_to new_customer_registration_path ,class: 'nav-link text-light' do %>
               新規登録
             <% end %>
           </li>
         <!--ログインページ-->
           <li>
-            <%= link_to customers_sign_in_path, method: :get,class: 'nav-link text-light' do %>
+            <%= link_to new_customer_session_path, method: :get,class: 'nav-link text-light' do %>
               ログイン
             <% end %>
           </li>
