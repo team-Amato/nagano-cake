@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
   devise_for :customers
-  
+
   root to: "homes#top"
   get '/about' => "homes#about"
+
+  get '/customers/sign_up' => 'registrations#new'
+  post '/customers' => 'registrations#create'
+
+  get '/customers/sign_in' => 'sessions#new'
+  post '/customers/sign_in' => 'sessions#create'
+  delete '/customers/sign_out' => 'sessions#destroy'
+
   get '/customers/mypage' => 'customers#show'
+  get '/customers/edit' => 'customers#edit'
+  patch '/customers' => 'customers#update'
   get 'customers/check'
   patch 'customers/withdraw'
 
@@ -48,6 +58,5 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :order_details, only: [:update]
   end
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
