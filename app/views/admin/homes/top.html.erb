@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 pt-3">
-        <h2>商品一覧</h2>
+        <h2>注文履歴一覧</h2>
         <table class="table table-striped">
             <tr>
-                <td>商品ID</td>
-                <td>商品名</td>
-                <td>税抜価格</td>
-                <td>ジャンル</td>
-                <td>ステータス</td>
+                <td>購入日時</td>
+                <td>購入者</td>
+                <td>注文個数</td>
+                <td>注文ステータス</td>
             </tr>
+                <% @orders.each do |order| %>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+                <td><%= order.name %></td>
+                <td><%= order.count %></td>
+                <td><%= order.status_i18n %></td>
             </tr>
+                <% end %>
         </table>
                 <div class="pagination">
                     <p>1</p>
