@@ -4,7 +4,7 @@
       <head>
         <%= stylesheet_link_tag 'signup', media: 'all', 'data-turbolinks-track': 'reload' %>
       </head>
-      <%= form_with model: @customer, url: user_registration_path do |f| %>
+      <%= form_with model: @customer, url: customer_registration_path do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
         <h5>新規会員登録</h5>
           <table>
@@ -49,6 +49,15 @@
               <td></td>
               <td>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com"  %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= f.label :郵便番号 %>
+              </th>
+              <td></td>
+              <td>
+                <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", placeholder: "0000000"  %>
               </td>
             </tr>
             <tr>
@@ -102,7 +111,7 @@
   
         <h5>既に登録済みの方</h5>
           <p>
-            <%= link_to "こちら", new_user_session_path %>
+            <%= link_to "こちら", new_customer_session_path %>
             からログインしてください。
           </p>
     </div>
