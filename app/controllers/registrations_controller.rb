@@ -12,6 +12,5 @@ class RegistrationsController < ApplicationController
       flash[:alert] = "会員登録失敗"
       render action: :new
     end
-
   end
 end

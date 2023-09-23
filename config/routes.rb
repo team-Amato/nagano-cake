@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+
   devise_for :admins, skipcontrollers: {
   sessions: 'admins/sessions'
 }
 
-  devise_for :users
   devise_for :customers
 
   root to: "homes#top"
